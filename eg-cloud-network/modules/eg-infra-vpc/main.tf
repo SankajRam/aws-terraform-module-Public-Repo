@@ -8,7 +8,7 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_subnet" "main" {
-  vpc_id     = "${var.vpc_id}"
+  vpc_id     = aws_vpc.vpc.id
   cidr_block = "${var.subnet_cidr}"
 
   tags = {
@@ -19,3 +19,4 @@ resource "aws_subnet" "main" {
 output "aws_vpc"{
   value="${aws_vpc.main.id}"
 }
+
