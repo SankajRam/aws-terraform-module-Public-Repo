@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  region = var.region
   access_key = "AKIARJ6UUCFIPOB7V3JD"
   secret_key = "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"
 }
@@ -16,10 +16,10 @@ provider "aws" {
 
 module "eg_vpc" {
 source = "../modules/eg-infra-vpc"
-vpc_cidr ="196.168.0.0/16"
+vpc_cidr =var.vpc_cidr
 tenancy  ="default"
 #vpc_id="${module.eg_vpc.vpc.id}"
-subnet_cidr="196.168.1.0/24"
+subnet_cidr=var.subnet_cidr
 
 }
 
