@@ -11,7 +11,7 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "main" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "${var.subnet_cidr}"
-  azs             = "var.zone}          //["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  azs             = "${var.zone}          
   tags = {
     Terraform = "true"
     Environment = "dev"
