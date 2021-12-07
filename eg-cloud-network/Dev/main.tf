@@ -19,10 +19,6 @@ source = "../modules/eg-infra-vpc"
 vpc_cidr ="${var.vpc_cidr}"
 tenancy  ="default"
 subnet_cidr="${var.subnet_cidr}"
-tags = {
-    Terraform = "true"
-    Environment = "dev"
-  }
 }
 #vpc_id="${module.eg_vpc.vpc.id}"
 
