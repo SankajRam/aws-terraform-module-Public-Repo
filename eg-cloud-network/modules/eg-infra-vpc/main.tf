@@ -3,7 +3,8 @@ resource "aws_vpc" "main" {
   instance_tenancy = "${var.tenancy}"
   
   tags = {
-    Name = "main"
+    Terraform = "true"
+    Environment = "dev"
   }
 }
 
@@ -12,7 +13,8 @@ resource "aws_subnet" "main" {
   cidr_block = "${var.subnet_cidr}"
 
   tags = {
-    Name = "Main"
+    Terraform = "true"
+    Environment = "dev"
   }
 }
 
