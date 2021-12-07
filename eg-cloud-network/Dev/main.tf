@@ -23,13 +23,11 @@ private_subnets ="null"                                               //["10.0.1
 public_subnets  = "null"                                              //["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 enable_nat_gateway = true
 enable_vpn_gateway = true
+subnet_cidr="${var.subnet_cidr}"
 tags = {
     Terraform = "true"
     Environment = "dev"
   }
 }
 #vpc_id="${module.eg_vpc.vpc.id}"
-subnet_cidr="${var.subnet_cidr}"
-
-}
 
