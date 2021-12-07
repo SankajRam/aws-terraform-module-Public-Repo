@@ -18,7 +18,3 @@ resource "aws_subnet" "main" {
   }
 }
 
-output "aws_vpc"{
-  value="${aws_vpc.main.id}"
-}
-
