@@ -18,4 +18,7 @@ variable "subnet_cidr"{
   description = "CIDR"
 }
 
-
+variable "vpc_name"{
+  type   = string
+  description= "vpc name "
+}
