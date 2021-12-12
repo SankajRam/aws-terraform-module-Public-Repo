@@ -49,5 +49,16 @@ resource "aws_route_table_association" "rt_associations" {
   route_table_id = aws_route_table.igw_rt.id
 }
 
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id     = module.vpc.vpc_id
+  service_name = "com.amazonaws.${var.aws_region}.s3"
+  route_table_id = aws_route_table.igw_rt.id 
+#   route_table_ids = [
+#       aws_route_table.route_tables["${local.stz_rt}"].id,
+#       aws_route_table.route_tables["${local.sec_rt}"].id
+#   ]
 
-
+  tags = {
+    Environment = var.vpc_name
+  }
+}    
