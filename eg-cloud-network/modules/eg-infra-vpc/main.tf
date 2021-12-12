@@ -1,4 +1,4 @@
-resource "aws_vpc" "main" {
+resource "aws_vpc" "r21vpc" {
   cidr_block       = "${var.vpc_cidr}"
   instance_tenancy = "${var.tenancy}"
   
@@ -8,8 +8,8 @@ resource "aws_vpc" "main" {
   }
 }
 
-resource "aws_subnet" "main" {
-  vpc_id     = aws_vpc.main.id
+resource "aws_subnet" "r21subnet" {
+  vpc_id     = aws_vpc.r21vpc.id
   cidr_block = "${var.subnet_cidr}"
   availability_zone = "${var.zone}"          
   tags = {
@@ -19,7 +19,7 @@ resource "aws_subnet" "main" {
 }
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id     = aws_vpc.main.id
+  vpc_id     = aws_vpc.r21vpc.id
   tags = {
     Name = var.vpc_name
     Terraform = "true"
@@ -28,10 +28,14 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_route_table" "igw_rt" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.r21vpc.id
   tags = {
     Name = "igw_rt"
+    Terraform = "true"
+    Environment = "dev"
   }
+  
+  
 }
 
 resource "aws_route" "rtb" {
@@ -41,7 +45,7 @@ resource "aws_route" "rtb" {
 }
 
 resource "aws_route_table_association" "rt_associations" {
-  subnet_id      = aws_subnet.main.id
+  subnet_id      = aws_subnet.r21subnet.id
   route_table_id = aws_route_table.igw_rt.id
 }
 
