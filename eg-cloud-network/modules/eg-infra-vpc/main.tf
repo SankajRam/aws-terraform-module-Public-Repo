@@ -13,6 +13,7 @@ resource "aws_subnet" "r21subnet" {
   cidr_block = "${var.subnet_cidr}"
   availability_zone = "${var.zone}"          
   tags = {
+    #Name="${var.vpc_name}"
     Terraform = "true"
     Environment = "dev"
   }
@@ -63,4 +64,27 @@ resource "aws_route_table_association" "rt_associations" {
 #   }
 # }    
 
+resource "aws_security_group" "asg" {
+  name        = "egain-asg-01"
+  description = "Allow TCP inbound traffic"
+  vpc_id = aws_vpc.r21vpc.id
+  ingress {
+    description      = "Application Access"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = [aws_subnet.r21subnet]
+  }
+
+  egress {
+    description      = "EG5080-STZ-2b"
+    from_port        = 8443
+    to_port          = 8443
+    protocol         = "-1"
+    cidr_blocks      = ["172.22.61.0/25"]
+  }
+  tags = {
+    Name = "sg"
+  }
+}
 
