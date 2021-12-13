@@ -88,3 +88,30 @@ resource "aws_security_group" "asg" {
   }
 }
 
+resource "aws_network_acl" "nacl" {
+  vpc_id = aws_vpc.r21vpc.id
+ 
+  egress {
+    description = "EG5080-DMZ-2b"
+    protocol   = "tcp"
+    rule_no    = 500
+    action     = "allow"
+    cidr_block = "172.22.60.0/25"
+    from_port  = 443
+    to_port    = 443
+  }
+
+  ingress {
+    description = "Custom TCP Rule"
+    protocol   = "tcp"
+    rule_no    = 900
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = ["1024 - 65535"]
+    to_port    = ["1024 - 65535"]
+  }
+
+  tags = {
+    Name = "nacl"
+  }
+}
