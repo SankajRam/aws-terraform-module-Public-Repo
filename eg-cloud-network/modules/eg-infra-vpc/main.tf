@@ -80,7 +80,7 @@ resource "aws_security_group" "asg" {
     description      = "EG5080-STZ-2b"
     from_port        = 8443
     to_port          = 8443
-    protocol         = "-1"
+    protocol         = "tcp"
     cidr_blocks      = ["172.22.61.0/25"]
   }
   tags = {
