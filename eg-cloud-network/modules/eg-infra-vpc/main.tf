@@ -92,7 +92,6 @@ resource "aws_network_acl" "nacl" {
   vpc_id = aws_vpc.r21vpc.id
  
   egress {
-    description = "EG5080-DMZ-2b"
     protocol   = "tcp"
     rule_no    = 500
     action     = "allow"
@@ -102,13 +101,12 @@ resource "aws_network_acl" "nacl" {
   }
 
   ingress {
-    description = "Custom TCP Rule"
     protocol   = "tcp"
     rule_no    = 900
     action     = "allow"
     cidr_block = "0.0.0.0/0"
-    from_port  = ["1024 - 65535"]
-    to_port    = ["1024 - 65535"]
+    from_port  = "1024-65535"
+    to_port    = "1024-65535"
   }
 
   tags = {
