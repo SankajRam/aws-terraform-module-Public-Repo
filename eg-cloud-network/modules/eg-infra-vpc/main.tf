@@ -105,8 +105,8 @@ resource "aws_network_acl" "nacl" {
     rule_no    = 900
     action     = "allow"
     cidr_block = "0.0.0.0/0"
-    from_port  = ["1024-65535"]
-    to_port    = ["1024-65535"]
+    from_port  = '1024-65535'
+    to_port    = '1024-65535'
   }
 
   tags = {
