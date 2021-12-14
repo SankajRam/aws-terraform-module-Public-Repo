@@ -5,15 +5,15 @@ variable "vpc_cidr" {
 variable "tenancy" {
   default = "dedicated"
 }
-variable "zone"{
+# variable "zone"{
   
-  default ="eu-west-1a"
-}
-#variable "vpc_id" {}
+#   default ="eu-west-1a"
+# }
+# #variable "vpc_id" {}
 
-variable "subnet_cidr" {
-  default = "10.0.1.0/24"
-}
+# variable "subnet_cidr" {
+#   default = "10.0.1.0/24"
+# }
 
 variable "vpc_name" {}
 variable "region" {}
