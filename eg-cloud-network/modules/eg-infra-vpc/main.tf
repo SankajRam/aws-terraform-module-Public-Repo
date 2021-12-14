@@ -9,9 +9,12 @@ resource "aws_vpc" "r21vpc" {
 }
 
 resource "aws_subnet" "r21subnet" {
+  for_each = var.subnet
   vpc_id     = aws_vpc.r21vpc.id
-  cidr_block = "${var.subnet_cidr}"
-  availability_zone = "${var.zone}"          
+  #cidr_block = "${var.subnet_cidr}"
+  #availability_zone = "${var.zone}"  
+  availability_zone_id = each.value["az"]
+  cidr_block = each.value["cidr"]
   tags = {
     #Name="${var.vpc_name}"
     Terraform = "true"
