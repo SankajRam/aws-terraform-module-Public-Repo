@@ -40,3 +40,11 @@ variable "subnet" {
       }
    }
 }
+variable "subnet" {
+  type=map(object({
+  subnet=string
+  az=string
+  cidr=string
+  }))
+  default{}
+}
