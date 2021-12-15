@@ -18,7 +18,8 @@ module "eg_vpc" {
 source = "../modules/eg-infra-vpc"
 vpc_cidr ="${var.vpc_cidr}"
 tenancy  ="default"
-subnet_cidr="${var.subnet_cidr}"
+# subnet_cidr="${var.subnet_cidr}"
+subnet="${var.subnet}"
 vpc_name="${var.vpc_name}"
 region="${var.region}"
 }
