@@ -17,4 +17,4 @@ variable "tenancy" {
 
 variable "vpc_name" {}
 variable "region" {}
-
+variable "subnet" {}
