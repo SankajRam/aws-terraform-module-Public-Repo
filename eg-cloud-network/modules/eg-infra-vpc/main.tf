@@ -49,7 +49,9 @@ resource "aws_route" "rtb" {
 }
 
 resource "aws_route_table_association" "rt_associations" {
-  subnet_id      = aws_subnet.r21subnet.id
+  #subnet_id      = aws_subnet.r21subnet.id
+  subnet_id= aws_subnet.r21subnet[each.key]
+  #subnet_id       =lookup(var.subnet, each.value["subnet_key"], null)["name"]
   route_table_id = aws_route_table.igw_rt.id
 }
 
