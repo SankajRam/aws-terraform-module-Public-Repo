@@ -23,23 +23,23 @@ variable "vpc_name"{
   description= "vpc name "
 }
 
-variable "subnet" {
-   type = map
-   default = {
-      sub-1 = {
-         az = "az1"
-         cidr = "az1_cidr"
-      }
-      sub-2 = {
-         az = "az2"
-         cidr = "az2_cidr"
-      }
-      sub-3 = {
-         az = "az3"
-         cidr = "az3_cidr"
-      }
-   }
-}
+# variable "subnet" {
+#    type = map
+#    default = {
+#       sub-1 = {
+#          az = "az1"
+#          cidr = "az1_cidr"
+#       }
+#       sub-2 = {
+#          az = "az2"
+#          cidr = "az2_cidr"
+#       }
+#       sub-3 = {
+#          az = "az3"
+#          cidr = "az3_cidr"
+#       }
+#    }
+# }
 variable "subnet" {
   type=map(object({
   az=string
