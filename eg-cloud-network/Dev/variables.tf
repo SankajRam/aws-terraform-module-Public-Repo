@@ -45,5 +45,5 @@ variable "subnet" {
   az=string
   cidr=string
   }))
-  default{}
+  default={}
 }
