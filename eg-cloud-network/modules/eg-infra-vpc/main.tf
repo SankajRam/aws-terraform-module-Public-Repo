@@ -116,5 +116,5 @@ resource "aws_subnet" "r21subnet" {
 
 #   tags = {
 #     Name = "nacl"
-  }
-}
+#   }
+# }
