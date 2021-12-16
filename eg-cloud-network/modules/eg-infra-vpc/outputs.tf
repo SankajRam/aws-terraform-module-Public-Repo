@@ -7,5 +7,5 @@ output "aws_vpc"{
 # }
 
 output "subnet_id" {
-aws_subnet.r21subnet[each.key]
+value=aws_subnet.r21subnet[each.key]
 }
